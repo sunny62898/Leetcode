@@ -1,6 +1,6 @@
 
 
-class Solution {
+class Solution_AddTwoNumber {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode ans = new ListNode();
         ListNode rear = ans;
@@ -120,7 +120,7 @@ class ListNode {
 public class add_two_number{
 
     public static void main(String[] args) {
-        Solution test = new Solution();
+        Solution_AddTwoNumber test = new Solution_AddTwoNumber();
         ListNode l1 = new ListNode(0);
         ListNode l2 = new ListNode(0);
 

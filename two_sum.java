@@ -1,5 +1,5 @@
 
-class Solution {
+class Solution_TwoSum {
     public int[] twoSum(int[] nums, int target) {
         int copy[]  = new int [nums.length];
         System.arraycopy(nums, 0, copy, 0, nums.length);
@@ -109,7 +109,7 @@ class Solution {
 public class two_sum{
 
     public static void main(String[] args) {
-        Solution test = new Solution();
+        Solution_TwoSum test = new Solution_TwoSum();
         int nums[] = {2,5,3,6,7,4,58,64,94};
         int ans[] = test.twoSum(nums, 12);
         System.out.println(ans[0] + "  " + ans[1]);
