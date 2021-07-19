@@ -1,6 +1,11 @@
+import java.util.HashSet;
+import java.util.Set;
+
 class Solution_LongestSubstring {
     public int lengthOfLongestSubstring(String s) {
         
+
+        /*
         if(s.length() == 0){
             return 0;
         }
@@ -39,7 +44,27 @@ class Solution_LongestSubstring {
         }
 
         return max;
+        */
+
+
+        Set <Character> seen = new HashSet<>();
+        int i  = 0;
+        int max = 0;
         
+        for(int j = 0; j < s.length();j++){
+            char c = s.charAt(j);
+
+            while(seen.contains(c)){   //刪到c的時候才會停下來
+                
+                seen.remove(s.charAt(i++)); //否則一直從前面刪過來
+
+            }
+
+            seen.add(c);   //加上新加入的c
+            max = Math.max(max, j - i + 1);
+        }
+
+        return max;
     }
 
 
@@ -48,7 +73,7 @@ class Solution_LongestSubstring {
 public class longest_substring {
     public static void main(String[] args) {
         Solution_LongestSubstring test = new Solution_LongestSubstring();
-        String str = "qqqqqqq";
+        String str = "abbcabcaa";
         int ans = test.lengthOfLongestSubstring(str);
         System.out.println(ans);
     }
