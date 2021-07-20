@@ -22,17 +22,30 @@ class Solution_StringToInteger {
         }
         else{
             boolean neg = false;
+            boolean charater = false;
+            boolean zero = false;
             long num = 0;
             for(int i = 0;i < s.length();i++){
                 char c = s.charAt(i);
                 
-                if(c == '-'){
-                    neg = true;
-                }
-                else if(i == 0 && c == '0'){
+                if(zero && c == '-'){
                     return 0;
                 }
+
+                else if(i == 0 && c == '-'){
+                    neg = true;
+                }
+                else if(i != 0 && c == '-'){
+                    neg = true;
+                }
+                
                 else if(c >= '0' && c <= '9'){
+                    if(charater){
+                        break;
+                    }
+                    if(c == '0'){
+                        zero = true;
+                    }
                     num = num*10 + (c - '0');
                     
                     if(num >= Integer.MAX_VALUE){
@@ -47,6 +60,9 @@ class Solution_StringToInteger {
                         
                     }
                     
+                }
+                else if((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')){
+                    charater = true;
                 }
                 else{
                     if(c == ' ' || c == '+'){
@@ -75,7 +91,7 @@ class Solution_StringToInteger {
 public class string_to_integer {
     public static void main(String[] args) {
         Solution_StringToInteger test = new Solution_StringToInteger();
-        String str = "21474836460";
+        String str = "  00-12a42";
         int ans = test.myAtoi(str);
         System.out.println(ans);
     }
