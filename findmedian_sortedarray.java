@@ -36,7 +36,7 @@ class Solution_findMedianSortedArray {
             System.arraycopy(nums1, 0, combine, 0, nums1.length);
             System.arraycopy(nums2, 0, combine, nums1.length, nums2.length);
 
-            insertionsort(combine);
+            insertionsort(combine, nums1.length);
 
             if(combine.length % 2 == 0){ //雙數
 
@@ -50,10 +50,10 @@ class Solution_findMedianSortedArray {
         }
     }
 
-    void insertionsort(int [] array){
+    void insertionsort(int [] array, int start){
         int len = array.length;
         int key,j;
-        for(int i = 0;i < len;i++){
+        for(int i = start;i < len;i++){
             key = array[i];
             j = i - 1;
             while(j >= 0 && array[j] > key){
