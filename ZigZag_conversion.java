@@ -22,6 +22,37 @@ class Solution_ZigZag_conversion {
                     for(來運算要填入哪個字, 從第二個字開始填)
             
         */
-        return s;
+        if(s.length() <= numRows || numRows == 1){
+            return s;
+        }
+
+        StringBuilder string = new StringBuilder();
+        int index = 0;
+        int n = 0;
+        for(int i = 0;i < numRows;i++){
+            string.append(s.charAt(i));
+            n = i;
+            index = 2*(numRows - 1)-n;
+            for(int j = 1;index < s.length();j++, n = index, index = 2*j*(numRows - 1)-n){
+                if(index > n){
+                    string.append(s.charAt(index));
+                }
+                
+            }
+        }
+
+
+        return string.toString();
+    }
+}
+
+
+public class ZigZag_conversion{
+
+    public static void main(String[] args) {
+        Solution_ZigZag_conversion test = new Solution_ZigZag_conversion();
+        String s = "PAYPALISHIRING";
+        String ans = test.convert(s, 4);
+        System.out.println(ans);
     }
 }
